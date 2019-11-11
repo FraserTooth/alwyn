@@ -1,0 +1,7 @@
+.chartBox {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 0%;
+    max-width: 100vw;
+    max-height: 85vh;
+  };

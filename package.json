@@ -1,0 +1,31 @@
+{
+  "name": "alwyn",
+  "version": "0.0.1",
+  "description": "Code Generator with TDD to bridge the coding gap.",
+  "main": "index.js",
+  "repository": "https://github.com/FraserTooth/alwyn.git",
+  "author": "Fraser Tooth <frasertooth@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.6.0",
+    "@mrblenny/react-flow-chart": "^0.0.8",
+    "next": "^9.1.3",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-draggable": "^4.1.0",
+    "redux": "^4.0.4",
+    "typeface-roboto": "^0.0.75"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "file-loader": "^4.2.0",
+    "prettier": "^1.19.1",
+    "url-loader": "^2.2.0"
+  }
+}
