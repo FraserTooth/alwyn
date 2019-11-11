@@ -1,22 +1,8 @@
 export default {
-  type: 'Sum',
+  type: 'Const',
   ports: {
     port1: {
       id: 'port1',
-      type: 'top',
-      properties: {
-        custom: 'property'
-      }
-    },
-    port2: {
-      id: 'port2',
-      type: 'top',
-      properties: {
-        custom: 'property'
-      }
-    },
-    port3: {
-      id: 'port3',
       type: 'bottom',
       properties: {
         custom: 'property'
@@ -26,7 +12,9 @@ export default {
   properties: {
     custom: 'property'
   },
-  code: (variableName, value) => {
-    return `const ${variableName} = ${value}`
+  code: (outputVariable, input1, input2) => {
+    return `
+        const ${outputVariable} = ${input1} + ${input2}
+      `
   }
 }

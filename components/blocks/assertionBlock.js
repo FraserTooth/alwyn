@@ -1,5 +1,5 @@
 export default {
-  type: 'Sum',
+  type: 'Assert',
   ports: {
     port1: {
       id: 'port1',
@@ -14,19 +14,17 @@ export default {
       properties: {
         custom: 'property'
       }
-    },
-    port3: {
-      id: 'port3',
-      type: 'bottom',
-      properties: {
-        custom: 'property'
-      }
     }
   },
   properties: {
     custom: 'property'
   },
-  code: (variableName, value) => {
-    return `const ${variableName} = ${value}`
+  importCode: () => {
+    return `const assert = require('assert');`
+  },
+  code: (testData, expectedValue) => {
+    return `
+        assert.equal(${testData}, ${expectedValue}); 
+        `
   }
 }
