@@ -1,5 +1,5 @@
 export default {
-  type: 'top/bottom',
+  type: 'Sum',
   ports: {
     port1: {
       id: 'port1',
@@ -9,7 +9,14 @@ export default {
       }
     },
     port2: {
-      id: 'port1',
+      id: 'port2',
+      type: 'top',
+      properties: {
+        custom: 'property'
+      }
+    },
+    port3: {
+      id: 'port3',
       type: 'bottom',
       properties: {
         custom: 'property'
@@ -18,5 +25,8 @@ export default {
   },
   properties: {
     custom: 'property'
+  },
+  code: (variableName, value) => {
+    return `const ${variableName} = ${value}`
   }
 }
