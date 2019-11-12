@@ -7,6 +7,8 @@ export default (chart) => {
   const nodes = chart.nodes
   const links = chart.links
 
+  console.log(nodes)
+
   //Set Up Initial Things
   let outputString = ''
   const importStatements = []
@@ -22,19 +24,13 @@ export default (chart) => {
     if (importCode && !importStatements.includes(importCode())) {
       importStatements.push(importCode())
     }
-
-    //Map Back In Code Functions
-    node.code = block.code
-
-    //Map Back In Custom Props
-    node.props = block.properties.custom
   }
 
   //Add in Dependencies
   importStatements.forEach((statement) => {
     outputString = outputString + statement
   })
-  outputString += '\n'
+  outputString += ' \n '
 
   let lastNode = null
   const codeBlockBuildUp = {}
@@ -51,12 +47,13 @@ export default (chart) => {
     if (!codeBlockBuildUp[link.from.nodeId]) {
       codeBlockBuildUp[link.from.nodeId] = {
         type: fromNode.type,
-        props: fromNode.props,
-        output: fromNode.props.variableName,
-        code: fromNode.code
+        props: fromNode.properties.custom,
+        output: fromNode.properties.custom.variableName,
+        code: Blocks[fromNode.type].code
       }
     } else {
-      codeBlockBuildUp[link.to.nodeId].output = fromNode.props.variableName
+      codeBlockBuildUp[link.to.nodeId].output =
+        fromNode.properties.custom.variableName
     }
 
     //To Block
@@ -64,14 +61,14 @@ export default (chart) => {
       codeBlockBuildUp[link.to.nodeId] = {
         type: toNode.type,
         inputs: {},
-        props: toNode.props,
-        code: toNode.code
+        props: toNode.properties.custom,
+        code: Blocks[toNode.type].code
       }
       codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
-        fromNode.props.variableName
+        fromNode.properties.custom.variableName
     } else {
       codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
-        fromNode.props.variableName
+        fromNode.properties.custom.variableName
     }
   }
 

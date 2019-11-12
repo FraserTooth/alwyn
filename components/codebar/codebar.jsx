@@ -10,13 +10,12 @@ export default class Codebar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      chart: props.chart,
       codeString: ''
     }
   }
 
   convertToString() {
-    const chart = this.state.chart
+    const chart = this.props.chart
 
     const outputString = generateCodeString(chart)
 
