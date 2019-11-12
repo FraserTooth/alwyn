@@ -20,7 +20,7 @@ export default {
     custom: 'property'
   },
   importCode: () => {
-    return `const assert = require('assert');`
+    return `const assert = require('assert');\n`
   },
   code: (testData, expectedValue) => {
     return `

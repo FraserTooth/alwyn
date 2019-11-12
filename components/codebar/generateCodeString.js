@@ -19,7 +19,7 @@ export default (chart) => {
 
     //Pull Out Import Statements
     const importCode = block.importCode
-    if (importCode && !importStatements.includes(importCode)) {
+    if (importCode && !importStatements.includes(importCode())) {
       importStatements.push(importCode())
     }
 
