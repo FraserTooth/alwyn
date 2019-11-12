@@ -25,7 +25,7 @@ export default {
   },
   properties: {
     custom: {
-      variableName: 'test'
+      variableName: 'testSum'
     }
   },
   code: (variableName, input1 = 0, input2 = 0) => {

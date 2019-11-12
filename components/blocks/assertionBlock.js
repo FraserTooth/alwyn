@@ -17,7 +17,9 @@ export default {
     }
   },
   properties: {
-    custom: 'property'
+    custom: {
+      variableName: 'testAssertion'
+    }
   },
   importCode: () => {
     return `const assert = require('assert');\n`

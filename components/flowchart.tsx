@@ -6,6 +6,7 @@ import NewBlockSidebar from './sidebar/sidebar'
 import Codebar from './codebar/codebar'
 import SelectEditor from './blockeditor/SelectEditor'
 import './flowchart.css'
+import alwynBlocks from './blocks/blockgenerator'
 
 /**
  * State is external to the <FlowChart> Element
@@ -39,7 +40,13 @@ export default class FlowchartComp extends React.Component {
     return (
       <div className="chartBox">
         {sidebarRenderChoice()}
-        <FlowChart chart={chart} callbacks={stateActions} />
+        <FlowChart
+          chart={chart}
+          callbacks={stateActions}
+          Components={{
+            NodeInner: alwynBlocks
+          }}
+        />
         <Codebar chart={chart} />
       </div>
     )
