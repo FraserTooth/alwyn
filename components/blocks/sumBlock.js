@@ -30,7 +30,7 @@ export default {
   },
   code: (variableName, input1 = 0, input2 = 0) => {
     return `
-        const ${variableName} = ${input1} + ${input2}
+        const ${variableName} = ${input1} + ${input2}\n
       `
   }
 }

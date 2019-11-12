@@ -25,6 +25,9 @@ export default class Codebar extends React.Component {
   render() {
     const formattedCodeArray = this.state.codeString.split('\n')
     const formattedCodeObjects = formattedCodeArray.map((line) => {
+      if (line === '') {
+        return <br />
+      }
       return <Typography>{line}</Typography>
     })
     return (

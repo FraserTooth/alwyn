@@ -11,7 +11,7 @@ export default {
   },
   properties: {
     custom: {
-      variableName: 'testVar',
+      variableName: 'testConstant',
       value: 1
     }
   },

@@ -6,7 +6,8 @@ const blockStyles = {
   backgroundColor: 'teal',
   borderRadius: '5px',
   color: 'white',
-  paddingBottom: '15px'
+  paddingBottom: '15px',
+  paddingTop: '15px'
 }
 
 /**

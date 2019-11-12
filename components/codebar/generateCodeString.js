@@ -1,13 +1,12 @@
 import Const from '../blocks/constBlock'
 import Sum from '../blocks/sumBlock'
 import Assert from '../blocks/assertionBlock'
+import { array } from 'prop-types'
 const Blocks = { Const, Sum, Assert }
 
 export default (chart) => {
   const nodes = chart.nodes
   const links = chart.links
-
-  console.log(nodes)
 
   //Set Up Initial Things
   let outputString = ''
@@ -30,9 +29,8 @@ export default (chart) => {
   importStatements.forEach((statement) => {
     outputString = outputString + statement
   })
-  outputString += ' \n '
+  outputString += '\n '
 
-  let lastNode = null
   const codeBlockBuildUp = {}
 
   //For Each Link
@@ -49,7 +47,8 @@ export default (chart) => {
         type: fromNode.type,
         props: fromNode.properties.custom,
         output: fromNode.properties.custom.variableName,
-        code: Blocks[fromNode.type].code
+        code: Blocks[fromNode.type].code,
+        id: link.from.nodeId
       }
     } else {
       codeBlockBuildUp[link.from.nodeId].output =
@@ -62,21 +61,41 @@ export default (chart) => {
         type: toNode.type,
         inputs: {},
         props: toNode.properties.custom,
-        code: Blocks[toNode.type].code
+        code: Blocks[toNode.type].code,
+        id: link.to.nodeId
       }
       codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
         fromNode.properties.custom.variableName
     } else {
+      if (!codeBlockBuildUp[link.to.nodeId].inputs) {
+        codeBlockBuildUp[link.to.nodeId].inputs = {}
+      }
       codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
         fromNode.properties.custom.variableName
     }
   }
 
-  console.log({ codeBlockBuildUp })
+  console.log(codeBlockBuildUp)
+
+  //Find Stuff without Inputs, Push Those into Inputs
+  //Find Stuff without Outputs, Push Those into Outputs
+  const inputs = []
+  const outputs = []
+  const inputOutput = []
+  for (const key in codeBlockBuildUp) {
+    if (!codeBlockBuildUp[key].inputs) {
+      inputs.push(codeBlockBuildUp[key])
+    } else if (!codeBlockBuildUp[key].output) {
+      outputs.push(codeBlockBuildUp[key])
+    } else {
+      inputOutput.push(codeBlockBuildUp[key])
+    }
+  }
+
+  const orderedCodeBlocks = [...inputs, ...inputOutput, ...outputs]
 
   //Loop Through Code Build Up
-  for (const key in codeBlockBuildUp) {
-    const block = codeBlockBuildUp[key]
+  orderedCodeBlocks.forEach((block) => {
     if (block.type === 'Const') {
       outputString += block.code(block.output, block.props.value)
     }
@@ -93,6 +112,6 @@ export default (chart) => {
         block.inputs ? block.inputs.expectedValue : undefined
       )
     }
-  }
+  })
   return outputString
 }

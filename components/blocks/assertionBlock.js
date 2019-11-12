@@ -26,7 +26,7 @@ export default {
   },
   code: (testData, expectedValue) => {
     return `
-        assert.equal(${testData}, ${expectedValue});\n; 
+        assert.equal(${testData}, ${expectedValue});\n 
         `
   }
 }
