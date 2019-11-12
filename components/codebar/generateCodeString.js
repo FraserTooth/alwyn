@@ -28,7 +28,6 @@ export default (chart) => {
 
     //Map Back In Custom Props
     node.props = block.properties.custom
-    console.log(node)
   }
 
   //Add in Dependencies
@@ -44,27 +43,59 @@ export default (chart) => {
   for (const key in links) {
     const link = links[key]
     const fromNode = nodes[link.from.nodeId]
-    const fromNodePort = fromNode[link.from.portId]
     const toNode = nodes[link.to.nodeId]
-    const toNodePort = toNode[link.to.portId]
+    const toNodePort = link.to.portId
 
-    if (fromNode.type === 'Const') {
-      outputString += fromNode.code(
-        fromNode.props.variableName,
-        fromNode.props.value
-      )
+    //Write Into Tracker if Not Tracked
+    //From Block
+    if (!codeBlockBuildUp[link.from.nodeId]) {
+      codeBlockBuildUp[link.from.nodeId] = {
+        type: fromNode.type,
+        props: fromNode.props,
+        output: fromNode.props.variableName,
+        code: fromNode.code
+      }
+    } else {
+      codeBlockBuildUp[link.to.nodeId].output = fromNode.props.variableName
     }
-    if (toNode.type === 'Sum') {
-      outputString += toNode.code(
-        toNode.props.variableName,
+
+    //To Block
+    if (!codeBlockBuildUp[link.to.nodeId]) {
+      codeBlockBuildUp[link.to.nodeId] = {
+        type: toNode.type,
+        inputs: {},
+        props: toNode.props,
+        code: toNode.code
+      }
+      codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
         fromNode.props.variableName
-      )
-    }
-    if (toNode.type === 'Assert') {
-      outputString += toNode.code(fromNode.props.variableName)
+    } else {
+      codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
+        fromNode.props.variableName
     }
   }
 
-  console.log(outputString)
+  console.log(codeBlockBuildUp)
+
+  //Loop Through Code Build Up
+  for (const key in codeBlockBuildUp) {
+    const block = codeBlockBuildUp[key]
+    if (block.type === 'Const') {
+      outputString += block.code(block.output, block.props.value)
+    }
+    if (block.type === 'Sum') {
+      outputString += block.code(
+        block.props.variableName,
+        block.inputs.input1,
+        block.inputs.input2
+      )
+    }
+    if (block.type === 'Assert') {
+      outputString += block.code(
+        block.inputs.testData,
+        block.inputs.expectedValue
+      )
+    }
+  }
   return outputString
 }
