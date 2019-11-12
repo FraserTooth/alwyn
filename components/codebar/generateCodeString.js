@@ -75,7 +75,7 @@ export default (chart) => {
     }
   }
 
-  console.log(codeBlockBuildUp)
+  console.log({ codeBlockBuildUp })
 
   //Loop Through Code Build Up
   for (const key in codeBlockBuildUp) {
