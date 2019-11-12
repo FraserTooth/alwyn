@@ -2,7 +2,7 @@ import { cloneDeep, mapValues } from 'lodash'
 import * as React from 'react'
 import { FlowChart, actions } from '@mrblenny/react-flow-chart'
 import starterChart from './starterChart'
-import Sidebar from './sidebar/sidebar'
+import NewBlockSidebar from './sidebar/sidebar'
 import Codebar from './codebar/codebar'
 import SelectEditor from './blockeditor/SelectEditor'
 import './flowchart.css'
@@ -15,10 +15,10 @@ import './flowchart.css'
 export default class FlowchartComp extends React.Component {
   public state = cloneDeep(starterChart)
 
-  updateVariableName = (e, blockId) => {
-    const updatedName = e.target.value
+  updateBlock = (e, blockId, fieldToEdit) => {
+    const updatedValue = e.target.value
     const stateCopy = cloneDeep(this.state)
-    stateCopy.nodes[blockId].properties.custom.variableName = updatedName
+    stateCopy.nodes[blockId].properties.custom[fieldToEdit] = updatedValue
     this.setState(stateCopy)
   }
 
@@ -28,12 +28,17 @@ export default class FlowchartComp extends React.Component {
       this.setState(func(...args))
     ) as typeof actions
 
+    const sidebarRenderChoice = () => {
+      if (this.state.selected.type) {
+        return <SelectEditor chart={chart} handleForm={this.updateBlock} />
+      } else {
+        return <NewBlockSidebar />
+      }
+    }
+
     return (
       <div className="chartBox">
-        <div>
-          <Sidebar />
-          <SelectEditor chart={chart} handleForm={this.updateVariableName} />
-        </div>
+        {sidebarRenderChoice()}
         <FlowChart chart={chart} callbacks={stateActions} />
         <Codebar chart={chart} />
       </div>

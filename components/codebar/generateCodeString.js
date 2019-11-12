@@ -52,7 +52,7 @@ export default (chart) => {
         code: Blocks[fromNode.type].code
       }
     } else {
-      codeBlockBuildUp[link.to.nodeId].output =
+      codeBlockBuildUp[link.from.nodeId].output =
         fromNode.properties.custom.variableName
     }
 
@@ -83,14 +83,14 @@ export default (chart) => {
     if (block.type === 'Sum') {
       outputString += block.code(
         block.props.variableName,
-        block.inputs.input1,
-        block.inputs.input2
+        block.inputs ? block.inputs.input1 : undefined,
+        block.inputs ? block.inputs.input2 : undefined
       )
     }
     if (block.type === 'Assert') {
       outputString += block.code(
-        block.inputs.testData,
-        block.inputs.expectedValue
+        block.inputs ? block.inputs.testData : undefined,
+        block.inputs ? block.inputs.expectedValue : undefined
       )
     }
   }

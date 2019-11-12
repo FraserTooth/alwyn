@@ -16,7 +16,8 @@ export default class SelectEditor extends React.Component {
     const chart = this.props.chart
     const selectedBlock = chart.selected
     const block = chart.nodes[selectedBlock.id]
-    //let variableName = block.properties.custom.variableName
+
+    //Main Block Editor
     const blockEditor = () => {
       if (selectedBlock.type === 'node') {
         return (
@@ -28,17 +29,41 @@ export default class SelectEditor extends React.Component {
               <ListItemText>Id: {selectedBlock.id}</ListItemText>
             </ListItem>
             <ListItem>
-              <ListItemSecondaryAction>
+              <ListItem>
                 <TextField
                   id="standard-basic"
-                  label="Name:"
+                  label="Name: "
                   margin="normal"
                   defaultValue={block.properties.custom.variableName}
-                  onChange={(e) => this.props.handleForm(e, selectedBlock.id)}
+                  onChange={(e) =>
+                    this.props.handleForm(e, selectedBlock.id, 'variableName')
+                  }
                 />
-              </ListItemSecondaryAction>
+              </ListItem>
             </ListItem>
+            {blockEditorSubType()}
           </div>
+        )
+      }
+    }
+
+    //Type Dependant Block Editor Elements
+    const blockEditorSubType = () => {
+      if (block.type === 'Const') {
+        return (
+          <ListItem>
+            <ListItem>
+              <TextField
+                id="standard-basic"
+                label="Value: "
+                margin="normal"
+                defaultValue={block.properties.custom.value}
+                onChange={(e) =>
+                  this.props.handleForm(e, selectedBlock.id, 'value')
+                }
+              />
+            </ListItem>
+          </ListItem>
         )
       }
     }
