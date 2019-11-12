@@ -1,8 +1,8 @@
 export default {
   type: 'Const',
   ports: {
-    port1: {
-      id: 'port1',
+    output: {
+      id: 'output',
       type: 'bottom',
       properties: {
         custom: 'property'
@@ -10,11 +10,12 @@ export default {
     }
   },
   properties: {
-    custom: 'property'
+    custom: {
+      variableName: 'testVar',
+      value: 1
+    }
   },
-  code: (outputVariable, input1, input2) => {
-    return `
-        const ${outputVariable} = ${input1} + ${input2}
-      `
+  code: (variableName, value) => {
+    return `const ${variableName} = ${value};\n`
   }
 }

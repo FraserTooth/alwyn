@@ -1,15 +1,15 @@
 export default {
   type: 'Assert',
   ports: {
-    port1: {
-      id: 'port1',
+    testData: {
+      id: 'testData',
       type: 'top',
       properties: {
         custom: 'property'
       }
     },
-    port2: {
-      id: 'port2',
+    expectedValue: {
+      id: 'expectedValue',
       type: 'top',
       properties: {
         custom: 'property'
@@ -24,7 +24,7 @@ export default {
   },
   code: (testData, expectedValue) => {
     return `
-        assert.equal(${testData}, ${expectedValue}); 
+        assert.equal(${testData}, ${expectedValue});\n; 
         `
   }
 }

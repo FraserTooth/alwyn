@@ -1,5 +1,4 @@
 import { REACT_FLOW_CHART } from '@mrblenny/react-flow-chart'
-import Card from '@material-ui/core/Card'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 

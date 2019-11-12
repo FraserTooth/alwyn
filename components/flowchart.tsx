@@ -23,7 +23,7 @@ export default class FlowchartComp extends React.Component {
       <div className="chartBox">
         <Sidebar />
         <FlowChart chart={chart} callbacks={stateActions} />
-        <Codebar codeString={this.state.links} />
+        <Codebar chart={chart} />
       </div>
     )
   }

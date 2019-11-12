@@ -1,22 +1,22 @@
 export default {
   type: 'Sum',
   ports: {
-    port1: {
-      id: 'port1',
+    input1: {
+      id: 'input1',
       type: 'top',
       properties: {
         custom: 'property'
       }
     },
-    port2: {
-      id: 'port2',
+    input2: {
+      id: 'input2',
       type: 'top',
       properties: {
         custom: 'property'
       }
     },
-    port3: {
-      id: 'port3',
+    output: {
+      id: 'output',
       type: 'bottom',
       properties: {
         custom: 'property'
@@ -24,9 +24,13 @@ export default {
     }
   },
   properties: {
-    custom: 'property'
+    custom: {
+      variableName: 'test'
+    }
   },
-  code: (variableName, value) => {
-    return `const ${variableName} = ${value}`
+  code: (variableName, input1 = 0, input2 = 0) => {
+    return `
+        const ${variableName} = ${input1} + ${input2}
+      `
   }
 }
