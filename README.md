@@ -24,11 +24,12 @@ This app is meant to act as a framework for develoment teams who want to allow n
 If this app was ever to be at 1.0.0, I would want to have:
 
 1. Single File Creation of New Blocks to allow swift adoption to a company's buisness logic.
-2. Intuitive 'no-teaching-required' default UI design
-3. Single File Configuration of Look and Feel (per component)
-4. Single File Configuration of Functionality
-5. Full Language Agnosticism
-6. Good Performance
+2. Using Test Blocks is Enforced for all Processes. (TDD!)
+3. Intuitive 'no-teaching-required' default UI design
+4. Single File Configuration of Look and Feel (per component)
+5. Single File Configuration of Functionality
+6. Full Language Agnosticism
+7. Good Performance
 
 ## Technologies
 
