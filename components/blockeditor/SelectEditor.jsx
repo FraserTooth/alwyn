@@ -66,9 +66,7 @@ export default class SelectEditor extends React.Component {
       <div>
         <ListItem>
           <ListItemText>
-            <Typography variant="h6">
-              Selected Block Will Appear Below
-            </Typography>
+            <Typography variant="h6">Block Selected:</Typography>
           </ListItemText>
         </ListItem>
 

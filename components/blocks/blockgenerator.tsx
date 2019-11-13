@@ -10,6 +10,30 @@ const blockStyles = {
   paddingTop: '15px'
 }
 
+const sumBlockStyle = {
+  backgroundColor: '#0C755B',
+  borderRadius: '5px',
+  color: 'white',
+  paddingBottom: '15px',
+  paddingTop: '15px'
+}
+
+const constBlockStyle = {
+  backgroundColor: '#76503F',
+  borderRadius: '5px',
+  color: 'white',
+  paddingBottom: '15px',
+  paddingTop: '15px'
+}
+
+const assertBlockStyle = {
+  backgroundColor: '#1E747C',
+  borderRadius: '5px',
+  color: 'white',
+  paddingBottom: '15px',
+  paddingTop: '15px'
+}
+
 /**
  * Create the custom component,
  * Make sure it has the same prop signature
@@ -17,32 +41,27 @@ const blockStyles = {
 export default ({ node, config }: INodeInnerDefaultProps) => {
   if (node.type === 'Const') {
     return (
-      <div style={blockStyles}>
-        <Typography align="center">Constant Block</Typography>
+      <div style={constBlockStyle}>
         <Typography align="center">
-          Name: {node.properties.custom.variableName}
-        </Typography>
-        <Typography align="center">
-          Value: {node.properties.custom.value}
+          {node.properties.custom.variableName} = {node.properties.custom.value}
         </Typography>
       </div>
     )
   } else if (node.type === 'Sum') {
     return (
-      <div style={blockStyles}>
-        <Typography align="center">Sum Block</Typography>
+      <div style={sumBlockStyle}>
         <Typography align="center">
-          Name: {node.properties.custom.variableName}
+          {node.properties.custom.variableName} = X + Y
         </Typography>
       </div>
     )
   } else if (node.type === 'Assert') {
     return (
-      <div style={blockStyles}>
-        <Typography align="center">Assertion Block</Typography>
+      <div style={assertBlockStyle}>
         <Typography align="center">
-          Name: {node.properties.custom.variableName}
+          <b>{node.properties.custom.variableName}</b>
         </Typography>
+        <Typography align="center">X Should be Equal to Y</Typography>
       </div>
     )
   } else {
