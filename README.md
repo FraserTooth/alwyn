@@ -12,8 +12,7 @@ alwyn is a React based Flowchart Development Environment.
 
 **[See a Demo on Heroku](https://alwyn.herokuapp.com)**
 
-![alt text](./misc/alwyn-early-mvp-screenshot.png 'An early MVP Screengrab of alwyn')
-_An early MVP Screengrab of alwyn_
+> ![alt text](./misc/alwyn-mvp-screenshot.png 'An MVP Screengrab of alwyn') _An early MVP Screengrab of alwyn_
 
 alwyn allows a user to create Blocks and define the Links between them using an intuitive drag-and-drop interface.
 
@@ -33,7 +32,7 @@ If this app was ever to be at 1.0.0, I would want to have:
 
 ## Technologies
 
-![alt text](./misc/tech.png 'Technologies Used')
+> ![alt text](./misc/tech.png 'Technologies Used')
 
 alwyn was built in React using Next.js and the material-ui.
 
