@@ -1,10 +1,7 @@
-import Link from '@material-ui/core/Link'
 import FlowchartComp from '../components/flowchart'
 import 'typeface-roboto'
-import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
-import Grid from '@material-ui/core/Grid'
 import './pages.css'
+import { Divider, Grid, Typography, Link } from '@material-ui/core'
 
 const Index = () => {
   return (

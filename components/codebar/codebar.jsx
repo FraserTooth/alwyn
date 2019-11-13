@@ -1,9 +1,13 @@
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
 import './codebar.css'
 import * as React from 'react'
+import {
+  Typography,
+  ListItemText,
+  ListItem,
+  List,
+  Button
+} from '@material-ui/core'
 
-import Typography from '@material-ui/core/Typography'
 import generateCodeString from './generateCodeString'
 
 export default class Codebar extends React.Component {
@@ -26,17 +30,32 @@ export default class Codebar extends React.Component {
     const formattedCodeArray = this.state.codeString.split('\n')
     const formattedCodeObjects = formattedCodeArray.map((line) => {
       if (line === '') {
-        return <br />
+        return
       }
-      return <Typography>{line}</Typography>
+      return (
+        <ListItem>
+          <Typography>{line}</Typography>
+        </ListItem>
+      )
     })
     return (
-      <div className="codebar">
-        <button onClick={this.convertToString.bind(this)}>
-          What is the code?
-        </button>
+      <List>
+        <ListItem>
+          <ListItemText>
+            <Typography variant="h6">Generated Code:</Typography>
+          </ListItemText>
+        </ListItem>
+        <ListItem>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={this.convertToString.bind(this)}
+          >
+            What is the code?
+          </Button>
+        </ListItem>
         {formattedCodeObjects}
-      </div>
+      </List>
     )
   }
 }
