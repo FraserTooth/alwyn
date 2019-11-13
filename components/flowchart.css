@@ -1,4 +1,4 @@
-.chartBox {
-  max-width: 100vw;
-  height: 100vh;
+.chartBox > div > div > div {
+  max-width: 100vw !important;
+  max-height: 95vh !important;
 }

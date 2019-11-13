@@ -39,12 +39,12 @@ export default class FlowchartComp extends React.Component {
     }
 
     return (
-      <Box maxHeight="100vh" width="100vw">
+      <div className="chartBox">
         <Grid container>
           <Grid item xs={2}>
             {sidebarRenderChoice()}
           </Grid>
-          <Grid item xs={7}>
+          <Grid container item xs={7}>
             <FlowChart
               chart={chart}
               callbacks={stateActions}
@@ -57,7 +57,7 @@ export default class FlowchartComp extends React.Component {
             <Codebar chart={chart} />
           </Grid>
         </Grid>
-      </Box>
+      </div>
     )
   }
 }
