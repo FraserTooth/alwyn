@@ -8,6 +8,8 @@ _All TO-DOS will be tracked in Github Issues and Projects, so please drop an iss
 
 # alwyn
 
+![alt text](./misc/logo.png 'alwyn Logo')
+
 alwyn is a React based Flowchart Development Environment.
 
 **[See a Demo on Heroku](https://alwyn.herokuapp.com)**
