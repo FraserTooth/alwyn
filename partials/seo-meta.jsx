@@ -31,25 +31,12 @@ const Meta = (props) => (
     />
     <meta name="twitter:site" content="https://alwyn.herokuapp.com/" />
     <meta name="twitter:creator" content="Fraser Tooth" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="./favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./favicon-16x16.png"
-    />
-    <meta property="og:image" content="../misc/alwyn-mvp-screenshot.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <meta property="og:image" content="/alwyn-mvp-screenshot.png" />
+    <meta property="og:image:width" content="1062" />
+    <meta property="og:image:height" content="643" />
   </Head>
 )
 export default Meta
