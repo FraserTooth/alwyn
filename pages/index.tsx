@@ -3,7 +3,7 @@ import 'typeface-roboto'
 import './pages.css'
 import { Divider, Grid, Typography, Link } from '@material-ui/core'
 import Meta from '../partials/seo-meta.jsx'
-import Head from 'next/head'
+
 import Introduction from '../components/introduction'
 
 const Index = () => {
