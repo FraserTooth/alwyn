@@ -12,7 +12,11 @@ _All TO-DOS will be tracked in Github Issues and Projects, so please drop an iss
 
 alwyn is a React based Flowchart Development Environment.
 
+## Demo/Tech Talk
+
 **[See a Demo on Heroku](https://alwyn.herokuapp.com)**
+
+**[See my Tech Talk](https://www.youtube.com/watch?v=YBPEIb1FlrE)**
 
 > ![alt text](./misc/alwyn-mvp-screenshot.png 'An MVP Screengrab of alwyn') _An early MVP Screengrab of alwyn_
 
