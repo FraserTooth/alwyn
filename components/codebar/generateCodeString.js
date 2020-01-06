@@ -1,8 +1,5 @@
-import Const from '../blocks/constBlock'
-import Sum from '../blocks/sumBlock'
-import Assert from '../blocks/assertionBlock'
+import Blocks from '../blocks/allBlocks'
 import { array } from 'prop-types'
-const Blocks = { Const, Sum, Assert }
 
 export default (chart) => {
   const nodes = chart.nodes

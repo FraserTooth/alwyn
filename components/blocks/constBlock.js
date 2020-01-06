@@ -1,5 +1,12 @@
 export default {
   type: 'Const',
+  style: {
+    backgroundColor: '#76503F',
+    borderRadius: '5px',
+    color: 'white',
+    paddingBottom: '15px',
+    paddingTop: '15px'
+  },
   ports: {
     output: {
       id: 'output',

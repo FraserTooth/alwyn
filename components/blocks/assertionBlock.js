@@ -1,5 +1,12 @@
 export default {
   type: 'Assert',
+  style: {
+    backgroundColor: '#1E747C',
+    borderRadius: '5px',
+    color: 'white',
+    paddingBottom: '15px',
+    paddingTop: '15px'
+  },
   ports: {
     testData: {
       id: 'testData',
