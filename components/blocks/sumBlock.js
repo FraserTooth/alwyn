@@ -35,9 +35,9 @@ export default {
       variableName: 'testSum'
     }
   },
-  code: (variableName, input1 = 0, input2 = 0) => {
+  code: (block) => {
     return `
-        const ${variableName} = ${input1} + ${input2}\n
-      `
+      const ${block.props.variableName} = ${block.inputs.input1} + ${block.inputs.input2}\n
+    `
   }
 }

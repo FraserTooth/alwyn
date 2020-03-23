@@ -93,25 +93,7 @@ export default (chart) => {
 
   //Loop Through Code Build Up
   orderedCodeBlocks.forEach((block) => {
-    if (block.type === 'Const') {
-      outputString += block.code(block.output, block.props.value)
-    }
-    if (block.type === 'Sum') {
-      outputString += block.code(
-        block.props.variableName,
-        block.inputs ? block.inputs.input1 : undefined,
-        block.inputs ? block.inputs.input2 : undefined
-      )
-    }
-    if (block.type === 'Assert') {
-      outputString += block.code(
-        block.inputs ? block.inputs.testData : undefined,
-        block.inputs ? block.inputs.expectedValue : undefined
-      )
-    }
-    if (block.type === 'Fetch') {
-      outputString += block.code(block.output, block.props.url)
-    }
+    outputString += block.code(block)
   })
   return outputString
 }

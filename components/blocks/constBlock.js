@@ -22,7 +22,7 @@ export default {
       value: 1
     }
   },
-  code: (variableName, value) => {
-    return `const ${variableName} = ${value};\n`
+  code: (block) => {
+    return `const ${block.output} = ${block.props.value};\n`
   }
 }

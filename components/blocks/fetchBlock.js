@@ -22,11 +22,11 @@ export default {
       url: 'https://www.example.com'
     }
   },
-  code: (variableName, url = '') => {
+  code: (block) => {
     return `
-        const response  = await fetch(${url})
+        const response  = await fetch(${block.props.url})
         const data = await response.json()
-        const ${variableName} = await JSON.parse(data)\n
+        const ${block.output} = await JSON.parse(data)\n
       `
   }
 }

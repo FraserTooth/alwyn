@@ -31,7 +31,9 @@ export default {
   importCode: () => {
     return `const assert = require('assert');\n`
   },
-  code: (testData, expectedValue) => {
+  code: (block) => {
+    const testData = block.inputs ? block.inputs.testData : undefined
+    const expectedValue = block.inputs ? block.inputs.expectedValue : undefined
     return `
         assert.equal(${testData}, ${expectedValue});\n 
         `
