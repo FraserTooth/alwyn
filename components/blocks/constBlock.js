@@ -10,17 +10,12 @@ export default {
   ports: {
     output: {
       id: 'output',
-      type: 'bottom',
-      properties: {
-        custom: 'property'
-      }
+      type: 'bottom'
     }
   },
   properties: {
-    custom: {
-      variableName: 'testConstant',
-      value: 1
-    }
+    variableName: 'testConstant',
+    value: 1
   },
   code: (block) => {
     return `const ${block.output} = ${block.props.value};\n`

@@ -10,30 +10,19 @@ export default {
   ports: {
     input1: {
       id: 'input1',
-      type: 'top',
-      properties: {
-        custom: 'property'
-      }
+      type: 'top'
     },
     input2: {
       id: 'input2',
-      type: 'top',
-      properties: {
-        custom: 'property'
-      }
+      type: 'top'
     },
     output: {
       id: 'output',
-      type: 'bottom',
-      properties: {
-        custom: 'property'
-      }
+      type: 'bottom'
     }
   },
   properties: {
-    custom: {
-      variableName: 'testSum'
-    }
+    variableName: 'testSum'
   },
   code: (block) => {
     return `

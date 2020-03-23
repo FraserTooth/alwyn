@@ -10,23 +10,15 @@ export default {
   ports: {
     testData: {
       id: 'testData',
-      type: 'top',
-      properties: {
-        custom: 'property'
-      }
+      type: 'top'
     },
     expectedValue: {
       id: 'expectedValue',
-      type: 'top',
-      properties: {
-        custom: 'property'
-      }
+      type: 'top'
     }
   },
   properties: {
-    custom: {
-      variableName: 'testAssertion'
-    }
+    variableName: 'testAssertion'
   },
   importCode: () => {
     return `const assert = require('assert');\n`

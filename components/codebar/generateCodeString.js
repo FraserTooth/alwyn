@@ -42,14 +42,14 @@ export default (chart) => {
     if (!codeBlockBuildUp[link.from.nodeId]) {
       codeBlockBuildUp[link.from.nodeId] = {
         type: fromNode.type,
-        props: fromNode.properties.custom,
-        output: fromNode.properties.custom.variableName,
+        props: fromNode.properties,
+        output: fromNode.properties.variableName,
         code: Blocks[fromNode.type].code,
         id: link.from.nodeId
       }
     } else {
       codeBlockBuildUp[link.from.nodeId].output =
-        fromNode.properties.custom.variableName
+        fromNode.properties.variableName
     }
 
     //To Block
@@ -57,18 +57,18 @@ export default (chart) => {
       codeBlockBuildUp[link.to.nodeId] = {
         type: toNode.type,
         inputs: {},
-        props: toNode.properties.custom,
+        props: toNode.properties,
         code: Blocks[toNode.type].code,
         id: link.to.nodeId
       }
       codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
-        fromNode.properties.custom.variableName
+        fromNode.properties.variableName
     } else {
       if (!codeBlockBuildUp[link.to.nodeId].inputs) {
         codeBlockBuildUp[link.to.nodeId].inputs = {}
       }
       codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
-        fromNode.properties.custom.variableName
+        fromNode.properties.variableName
     }
   }
 

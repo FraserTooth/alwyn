@@ -10,17 +10,12 @@ export default {
   ports: {
     output: {
       id: 'output',
-      type: 'bottom',
-      properties: {
-        custom: 'property'
-      }
+      type: 'bottom'
     }
   },
   properties: {
-    custom: {
-      variableName: 'fetchRequest',
-      url: 'https://www.example.com'
-    }
+    variableName: 'fetchRequest',
+    url: 'https://www.example.com'
   },
   code: (block) => {
     return `

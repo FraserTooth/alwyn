@@ -19,17 +19,13 @@ export default ({ node, config }: INodeInnerDefaultProps) => {
   if (Blocks.hasOwnProperty(node.type)) {
     return (
       <div style={Blocks[node.type].style}>
-        <Typography align="center">
-          {node.properties.custom.variableName}
-        </Typography>
+        <Typography align="center">{node.properties.variableName}</Typography>
       </div>
     )
   } else {
     return (
       <div style={defaultStyle}>
-        <Typography align="center">
-          Name: {node.properties.custom.variableName}
-        </Typography>
+        <Typography align="center">Unknown Block</Typography>
       </div>
     )
   }

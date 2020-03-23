@@ -29,7 +29,7 @@ export default class SelectEditor extends React.Component {
                   id="standard-basic"
                   label="Name: "
                   margin="normal"
-                  defaultValue={block.properties.custom.variableName}
+                  defaultValue={block.properties.variableName}
                   onChange={(e) =>
                     this.props.handleForm(e, selectedBlock.id, 'variableName')
                   }
@@ -52,7 +52,7 @@ export default class SelectEditor extends React.Component {
                 id="standard-basic"
                 label="Value: "
                 margin="normal"
-                defaultValue={block.properties.custom.value}
+                defaultValue={block.properties.value}
                 onChange={(e) =>
                   this.props.handleForm(e, selectedBlock.id, 'value')
                 }
@@ -69,7 +69,7 @@ export default class SelectEditor extends React.Component {
                 id="standard-basic"
                 label="URL: "
                 margin="normal"
-                defaultValue={block.properties.custom.url}
+                defaultValue={block.properties.url}
                 onChange={(e) =>
                   this.props.handleForm(e, selectedBlock.id, 'url')
                 }
