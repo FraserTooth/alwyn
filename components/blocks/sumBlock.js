@@ -28,5 +28,8 @@ export default {
     return `
       const ${block.props.variableName} = ${block.inputs.input1} + ${block.inputs.input2}\n
     `
+  },
+  generateDisplayName: (properties) => {
+    return properties.variableName
   }
 }

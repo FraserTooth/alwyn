@@ -19,5 +19,8 @@ export default {
   },
   code: (block) => {
     return `const ${block.output} = ${block.props.value};\n`
+  },
+  generateDisplayName: (properties) => {
+    return `${properties.variableName}: ${properties.value}`
   }
 }

@@ -23,5 +23,8 @@ export default {
         const data = await response.json()
         const ${block.output} = await JSON.parse(data)\n
       `
+  },
+  generateDisplayName: (properties) => {
+    return `${properties.variableName} from ${properties.url}`
   }
 }

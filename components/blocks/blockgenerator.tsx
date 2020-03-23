@@ -19,7 +19,9 @@ export default ({ node, config }: INodeInnerDefaultProps) => {
   if (Blocks.hasOwnProperty(node.type)) {
     return (
       <div style={Blocks[node.type].style}>
-        <Typography align="center">{node.properties.variableName}</Typography>
+        <Typography align="center">
+          {Blocks[node.type].generateDisplayName(node.properties)}
+        </Typography>
       </div>
     )
   } else {

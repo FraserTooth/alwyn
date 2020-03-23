@@ -29,5 +29,8 @@ export default {
     return `
         assert.equal(${testData}, ${expectedValue});\n 
         `
+  },
+  generateDisplayName: (properties) => {
+    return properties.variableName
   }
 }

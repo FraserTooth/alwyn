@@ -20,7 +20,7 @@ export default class FlowchartComp extends React.Component {
   updateBlock = (e, blockId, fieldToEdit) => {
     const updatedValue = e.target.value
     const stateCopy = cloneDeep(this.state)
-    stateCopy.nodes[blockId].properties.custom[fieldToEdit] = updatedValue
+    stateCopy.nodes[blockId].properties[fieldToEdit] = updatedValue
     this.setState(stateCopy)
   }
 
