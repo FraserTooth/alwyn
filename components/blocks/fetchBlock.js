@@ -18,7 +18,7 @@ export default {
   },
   properties: {
     custom: {
-      variableName: 'testdata',
+      variableName: 'fetchRequest',
       url: 'https://www.example.com'
     }
   },

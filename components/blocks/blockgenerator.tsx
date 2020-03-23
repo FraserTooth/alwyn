@@ -20,7 +20,7 @@ export default ({ node, config }: INodeInnerDefaultProps) => {
     return (
       <div style={Blocks[node.type].style}>
         <Typography align="center">
-          {node.properties.custom.variableName} = {node.properties.custom.value}
+          {node.properties.custom.variableName}
         </Typography>
       </div>
     )

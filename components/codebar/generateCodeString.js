@@ -109,6 +109,9 @@ export default (chart) => {
         block.inputs ? block.inputs.expectedValue : undefined
       )
     }
+    if (block.type === 'Fetch') {
+      outputString += block.code(block.output, block.props.url)
+    }
   })
   return outputString
 }

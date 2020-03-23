@@ -61,6 +61,23 @@ export default class SelectEditor extends React.Component {
           </ListItem>
         )
       }
+      if (block.type === 'Fetch') {
+        return (
+          <ListItem>
+            <ListItem>
+              <TextField
+                id="standard-basic"
+                label="URL: "
+                margin="normal"
+                defaultValue={block.properties.custom.url}
+                onChange={(e) =>
+                  this.props.handleForm(e, selectedBlock.id, 'url')
+                }
+              />
+            </ListItem>
+          </ListItem>
+        )
+      }
     }
 
     return (
