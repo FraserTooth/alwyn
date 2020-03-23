@@ -2,6 +2,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
+import Blocks from '../blocks/allBlocks'
 
 import '../flowchart.css'
 
