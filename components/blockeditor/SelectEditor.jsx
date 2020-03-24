@@ -2,6 +2,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
+import Blocks from '../blocks/allBlocks'
 
 import '../flowchart.css'
 
@@ -28,7 +29,7 @@ export default class SelectEditor extends React.Component {
                   id="standard-basic"
                   label="Name: "
                   margin="normal"
-                  defaultValue={block.properties.custom.variableName}
+                  defaultValue={block.properties.variableName}
                   onChange={(e) =>
                     this.props.handleForm(e, selectedBlock.id, 'variableName')
                   }
@@ -51,9 +52,26 @@ export default class SelectEditor extends React.Component {
                 id="standard-basic"
                 label="Value: "
                 margin="normal"
-                defaultValue={block.properties.custom.value}
+                defaultValue={block.properties.value}
                 onChange={(e) =>
                   this.props.handleForm(e, selectedBlock.id, 'value')
+                }
+              />
+            </ListItem>
+          </ListItem>
+        )
+      }
+      if (block.type === 'Fetch') {
+        return (
+          <ListItem>
+            <ListItem>
+              <TextField
+                id="standard-basic"
+                label="URL: "
+                margin="normal"
+                defaultValue={block.properties.url}
+                onChange={(e) =>
+                  this.props.handleForm(e, selectedBlock.id, 'url')
                 }
               />
             </ListItem>

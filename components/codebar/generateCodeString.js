@@ -1,15 +1,13 @@
-import Const from '../blocks/constBlock'
-import Sum from '../blocks/sumBlock'
-import Assert from '../blocks/assertionBlock'
+import Blocks from '../blocks/allBlocks'
 import { array } from 'prop-types'
-const Blocks = { Const, Sum, Assert }
 
 export default (chart) => {
   const nodes = chart.nodes
   const links = chart.links
 
   //Set Up Initial Things
-  let outputString = ''
+  let functionName = 'testFunction'
+  let outputString = 'function ' + functionName + '(input){\n'
   const importStatements = []
 
   //For Each Node Map in Code Functions
@@ -29,7 +27,7 @@ export default (chart) => {
   importStatements.forEach((statement) => {
     outputString = outputString + statement
   })
-  outputString += '\n '
+  outputString += '\n'
 
   const codeBlockBuildUp = {}
 
@@ -45,14 +43,14 @@ export default (chart) => {
     if (!codeBlockBuildUp[link.from.nodeId]) {
       codeBlockBuildUp[link.from.nodeId] = {
         type: fromNode.type,
-        props: fromNode.properties.custom,
-        output: fromNode.properties.custom.variableName,
+        props: fromNode.properties,
+        output: fromNode.properties.variableName,
         code: Blocks[fromNode.type].code,
         id: link.from.nodeId
       }
     } else {
       codeBlockBuildUp[link.from.nodeId].output =
-        fromNode.properties.custom.variableName
+        fromNode.properties.variableName
     }
 
     //To Block
@@ -60,22 +58,20 @@ export default (chart) => {
       codeBlockBuildUp[link.to.nodeId] = {
         type: toNode.type,
         inputs: {},
-        props: toNode.properties.custom,
+        props: toNode.properties,
         code: Blocks[toNode.type].code,
         id: link.to.nodeId
       }
       codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
-        fromNode.properties.custom.variableName
+        fromNode.properties.variableName
     } else {
       if (!codeBlockBuildUp[link.to.nodeId].inputs) {
         codeBlockBuildUp[link.to.nodeId].inputs = {}
       }
       codeBlockBuildUp[link.to.nodeId].inputs[toNodePort] =
-        fromNode.properties.custom.variableName
+        fromNode.properties.variableName
     }
   }
-
-  console.log(codeBlockBuildUp)
 
   //Find Stuff without Inputs, Push Those into Inputs
   //Find Stuff without Outputs, Push Those into Outputs
@@ -96,22 +92,13 @@ export default (chart) => {
 
   //Loop Through Code Build Up
   orderedCodeBlocks.forEach((block) => {
-    if (block.type === 'Const') {
-      outputString += block.code(block.output, block.props.value)
-    }
-    if (block.type === 'Sum') {
-      outputString += block.code(
-        block.props.variableName,
-        block.inputs ? block.inputs.input1 : undefined,
-        block.inputs ? block.inputs.input2 : undefined
-      )
-    }
-    if (block.type === 'Assert') {
-      outputString += block.code(
-        block.inputs ? block.inputs.testData : undefined,
-        block.inputs ? block.inputs.expectedValue : undefined
-      )
-    }
+    outputString += block.code(block)
   })
+
+  //Close out
+  outputString += '}'
+
+  console.log(outputString)
+
   return outputString
 }
