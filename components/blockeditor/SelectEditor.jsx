@@ -23,60 +23,34 @@ export default class SelectEditor extends React.Component {
             <ListItem>
               <ListItemText>Id: {selectedBlock.id}</ListItemText>
             </ListItem>
-            <ListItem>
-              <ListItem>
-                <TextField
-                  id="standard-basic"
-                  label="Name: "
-                  margin="normal"
-                  defaultValue={block.properties.variableName}
-                  onChange={(e) =>
-                    this.props.handleForm(e, selectedBlock.id, 'variableName')
-                  }
-                />
-              </ListItem>
-            </ListItem>
-            {blockEditorSubType()}
+            {blockEditorProps()}
           </div>
         )
       }
     }
 
     //Type Dependant Block Editor Elements
-    const blockEditorSubType = () => {
-      if (block.type === 'Const') {
-        return (
-          <ListItem>
+    const blockEditorProps = () => {
+      if (Blocks[block.type]) {
+        const blockProps = Blocks[block.type].properties
+
+        const propsArray = Object.keys(blockProps)
+
+        return propsArray.map((prop) => {
+          return (
             <ListItem>
               <TextField
                 id="standard-basic"
-                label="Value: "
+                label={prop + ': '}
                 margin="normal"
-                defaultValue={block.properties.value}
+                defaultValue={block.properties[prop]}
                 onChange={(e) =>
-                  this.props.handleForm(e, selectedBlock.id, 'value')
+                  this.props.handleForm(e, selectedBlock.id, prop)
                 }
               />
             </ListItem>
-          </ListItem>
-        )
-      }
-      if (block.type === 'Fetch') {
-        return (
-          <ListItem>
-            <ListItem>
-              <TextField
-                id="standard-basic"
-                label="URL: "
-                margin="normal"
-                defaultValue={block.properties.url}
-                onChange={(e) =>
-                  this.props.handleForm(e, selectedBlock.id, 'url')
-                }
-              />
-            </ListItem>
-          </ListItem>
-        )
+          )
+        })
       }
     }
 
