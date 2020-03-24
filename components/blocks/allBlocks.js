@@ -4,7 +4,9 @@ import Sum from './default/sumBlock'
 import Assert from './default/assertionBlock'
 import Fetch from './default/fetchBlock'
 import IF from './default/conditionalBlock'
+import Return from './default/returnBlock'
+import Input from './default/inputBlock'
 
-const blocks = { Const, Sum, Assert, Fetch, IF }
+const blocks = { Input, Const, Sum, Fetch, IF, Assert, Return }
 
 export default blocks
