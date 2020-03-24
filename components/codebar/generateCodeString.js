@@ -6,7 +6,8 @@ export default (chart) => {
   const links = chart.links
 
   //Set Up Initial Things
-  let outputString = ''
+  let functionName = 'testFunction'
+  let outputString = 'function ' + functionName + '(input){\n'
   const importStatements = []
 
   //For Each Node Map in Code Functions
@@ -26,7 +27,7 @@ export default (chart) => {
   importStatements.forEach((statement) => {
     outputString = outputString + statement
   })
-  outputString += '\n '
+  outputString += '\n'
 
   const codeBlockBuildUp = {}
 
@@ -72,8 +73,6 @@ export default (chart) => {
     }
   }
 
-  console.log(codeBlockBuildUp)
-
   //Find Stuff without Inputs, Push Those into Inputs
   //Find Stuff without Outputs, Push Those into Outputs
   const inputs = []
@@ -95,5 +94,11 @@ export default (chart) => {
   orderedCodeBlocks.forEach((block) => {
     outputString += block.code(block)
   })
+
+  //Close out
+  outputString += '}'
+
+  console.log(outputString)
+
   return outputString
 }
