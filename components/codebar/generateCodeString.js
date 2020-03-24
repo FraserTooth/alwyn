@@ -1,12 +1,16 @@
 import Blocks from '../blocks/allBlocks'
 import { array } from 'prop-types'
 
-export default (chart) => {
+export default (chart, functionName = 'testFunction') => {
   const nodes = chart.nodes
   const links = chart.links
 
+  //Silliness Checks
+  if (functionName.length === 0) {
+    functionName = 'testFunction'
+  }
+
   //Set Up Initial Things
-  let functionName = 'testFunction'
   let outputString = 'function ' + functionName + '(input){\n'
   const importStatements = []
 
