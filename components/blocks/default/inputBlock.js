@@ -15,12 +15,12 @@ export default {
   },
   properties: {
     variableName: 'input',
-    value: 1
+    defaultValue: undefined
   },
   code: (block) => {
     return ``
   },
   generateDisplayName: (properties) => {
-    return `input`
+    return `${properties.variableName}`
   }
 }
